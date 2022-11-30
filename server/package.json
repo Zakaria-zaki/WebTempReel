@@ -6,6 +6,7 @@
   "scripts": {
     "watch": "nodemon src/server.js",
     "start": "node src/server.js",
+    "migrate-db": "node src/migrate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -22,7 +23,8 @@
     "mongoose": "^6.4.6",
     "pg": "^8.7.3",
     "sequelize": "^6.21.2",
-    "socket.io": "^4.5.1"
+    "socket.io": "^4.5.1",
+    "pm2": "^5.2.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.18"
