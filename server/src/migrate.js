@@ -13,4 +13,4 @@ connection
     connection.close();
   });
 
-await loadUsersData();
+loadUsersData();
