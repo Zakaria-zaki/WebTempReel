@@ -10,7 +10,5 @@ connection
     console.error(err);
   })
   .finally(() => {
-    connection.close();
+    loadUsersData();
   });
-
-loadUsersData();
