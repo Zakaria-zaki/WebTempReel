@@ -1,5 +1,5 @@
 <script>
-import {httpGetOneSalon, httpGetSalons} from "@/hooks/requests";
+import {httpGetOneSalon} from "@/hooks/requests";
 import {ref} from "vue";
 
 export default {
@@ -19,6 +19,9 @@ export default {
   },
   mounted() {
     this.getData()
+
+    // this.$store.dispatch('joinOrLeaveSalon', { userId: 1, roomName: this.salon.title, salonId: this.salon.id });
+    // store.sock.joinOrLeaveSalon(1, this.salon.title, this.salon.id);
   },
 }
 

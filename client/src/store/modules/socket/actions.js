@@ -1,5 +1,9 @@
+import {io} from "socket.io-client"
+
+const socket = io("ws://localhost:8000")
+
 export default {
-    async joinOrLeaveSalon(socket, userId, roomName, roomId) {
+    async joinOrLeaveSalon(userId, roomName, roomId) {
         let joinBtn = document.getElementById(roomId);
         if (joinBtn.innerHTML === "Join") {
             socket.emit("join", "esgi");

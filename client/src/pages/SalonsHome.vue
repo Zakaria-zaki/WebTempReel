@@ -1,21 +1,3 @@
-<!--<script setup>
-
-import SalonButton from "@/components/SalonButton.vue";
-import {httpGetSalons} from "@/hooks/requests";
-import {ref} from 'vue';
-
-const allSalons = ref([]);
-let salons = [];
-
-function handleClick($event) {
-}
-
-allSalons.value = await httpGetSalons();
-salons = JSON.parse(JSON.stringify(allSalons.value));
-
-console.log(salons);
-</script>-->
-
 <script>
 import {httpGetSalons} from "@/hooks/requests";
 import SalonButton from "@/components/SalonButton.vue";
