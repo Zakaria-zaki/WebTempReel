@@ -4,7 +4,7 @@ const { httpCreateMessage } = require('./messages.controller');
 
 const messageRouter = express.Router();
 
-messageRouter.post('/messages', checkAuthentication, httpCreateMessage);
+messageRouter.post('/', checkAuthentication, httpCreateMessage);
 
 module.exports = messageRouter;
 

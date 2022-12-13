@@ -5,9 +5,13 @@
 </template>
 
 <script>
+import SalonButton from "@/components/SalonButton.vue";
 export default {
   created () {
     this.$store.dispatch('tryLogin');
+  },
+  components: {
+    'v-salon-button': SalonButton
   }
 }
 </script>

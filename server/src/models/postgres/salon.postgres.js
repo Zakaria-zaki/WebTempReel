@@ -5,16 +5,20 @@ class Salon extends Model {
 }
 
 Salon.init({
-        name: {
+        title: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
         },
-        users: {
-            type: DataTypes.ARRAY(DataTypes.INTEGER),
+        description: {
+            type: DataTypes.STRING,
             allowNull: false,
         },
     },
+    {
+        sequelize: connection,
+        modelName: "salon",
+    }
 )
 
 module.exports = Salon;

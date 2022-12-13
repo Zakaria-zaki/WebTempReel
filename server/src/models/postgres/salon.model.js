@@ -1,57 +1,45 @@
 // Add User to Salon
-import User from "./user.postgres";
-import Salon from "./salon.postgres";
+const {salon} = require('./index');
 
-async function addUserToSalon(salonId, userId) {
+async function createSalon(data) {
     try {
-        const salon = await Salon.findOne({
-            where: {
-                id: salonId
-            }
-        });
-        const user = await User
-            .findOne({
-                where: {
-                    id: userId
-                }
-            });
-        salon.users.push(user.id);
-        await salon.save();
+        const newSalon = await salon.create(data);
         return salon;
     } catch (error) {
-        console.log("User joining Salon ID " + salonId + " ERROR : " + error);
+        console.log("Create Salon ERROR : " + error);
     }
 }
 
-async function removeUserFromSalon(salonId, userId) {
+async function getSalons() {
     try {
-        const salon = await Salon.findOne({
+        const newSalon = await salon.findAll();
+        return newSalon;
+    } catch (error) {
+        console.log("Get Salons ERROR : " + error);
+    }
+}
+
+async function getOneSalon(salonId) {
+    try {
+        const newSalon = await salon.findOne({
             where: {
                 id: salonId
             }
         });
-        const user = await User
-            .findOne({
-                where: {
-                    id: userId
-                }
-            });
-        salon.users = salon.users.filter((id) => id !== user.id);
-        await salon.save();
-        return salon;
+        return newSalon;
     } catch (error) {
-        console.log("User leaving Salon ID " + salonId + " ERROR : " + error);
+        console.log("Get Salon ID " + salonId + " ERROR : " + error);
     }
 }
 
 async function getSalonUsers(salonId) {
     try {
-        const salon = await Salon.findOne({
+        const newSalon = await salon.findOne({
             where: {
                 id: salonId
             }
         });
-        return salon.users;
+        return newSalon.users;
     } catch (error) {
         console.log("Get Salon ID " + salonId + " Users ERROR : " + error);
     }
@@ -59,20 +47,21 @@ async function getSalonUsers(salonId) {
 
 async function getUserInSalon(salonId, userId) {
     try {
-        const salon = await Salon.findOne({
+        const newSalon = await salon.findOne({
             where: {
                 id: salonId
             }
         });
-        return salon.users.filter((id) => id === userId);
+        return newSalon.users.filter((id) => id === userId);
     } catch (error) {
         console.log("Get Salon ID " + salonId + " User ID " + userId + " ERROR : " + error);
     }
 }
 
 module.exports = {
-    addUserToSalon,
-    removeUserFromSalon,
     getSalonUsers,
-    getUserInSalon
+    getUserInSalon,
+    createSalon,
+    getSalons,
+    getOneSalon
 }
