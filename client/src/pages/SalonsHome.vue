@@ -13,15 +13,8 @@ export default {
     }
   },
   methods: {
-    async getData() {
-      this.salons = httpGetSalons();
-    },
     handleClick: function () {
-
     }
-  },
-  mounted() {
-    this.getData()
   },
   setup() {
     const salons = ref([]);
