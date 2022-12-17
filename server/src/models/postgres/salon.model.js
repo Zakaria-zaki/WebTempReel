@@ -3,8 +3,7 @@ const {salon} = require('./index');
 
 async function createSalon(data) {
     try {
-        const newSalon = await salon.create(data);
-        return salon;
+        return await salon.create(data);
     } catch (error) {
         console.log("Create Salon ERROR : " + error);
     }
@@ -12,8 +11,7 @@ async function createSalon(data) {
 
 async function getSalons() {
     try {
-        const newSalon = await salon.findAll();
-        return newSalon;
+        return await salon.findAll();
     } catch (error) {
         console.log("Get Salons ERROR : " + error);
     }
@@ -21,12 +19,11 @@ async function getSalons() {
 
 async function getOneSalon(salonId) {
     try {
-        const newSalon = await salon.findOne({
+        return await salon.findOne({
             where: {
                 id: salonId
             }
         });
-        return newSalon;
     } catch (error) {
         console.log("Get Salon ID " + salonId + " ERROR : " + error);
     }
@@ -58,10 +55,38 @@ async function getUserInSalon(salonId, userId) {
     }
 }
 
+async function deleteSalon(salonId) {
+    try {
+        return await salon.destroy({
+            where: {
+                id: salonId
+            }
+        });
+    } catch (error) {
+        console.log("Delete Salon ID " + salonId + " ERROR : " + error);
+    }
+}
+
+async function editSalon(salonId, title) {
+    try {
+        return await salon.update({
+            title: title
+        }, {
+            where: {
+                id: salonId
+            }
+        });
+    } catch (error) {
+        console.log("Edit Salon ID " + salonId + " Title ERROR : " + error);
+    }
+}
+
 module.exports = {
     getSalonUsers,
     getUserInSalon,
     createSalon,
     getSalons,
-    getOneSalon
+    getOneSalon,
+    deleteSalon,
+    editSalon
 }

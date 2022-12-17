@@ -1,4 +1,4 @@
-const {createSalon, getSalons, getOneSalon} = require('../../models/postgres/salon.model');
+const {createSalon, getSalons, getOneSalon, deleteSalon, editSalon} = require('../../models/postgres/salon.model');
 
 async function httpCreateSalon(req, res) {
     const response = await createSalon({
@@ -18,8 +18,20 @@ async function httpGetOneSalon(req, res) {
     return res.status(200).json(response);
 }
 
+async function httpDeleteSalon(req, res) {
+    const response = await deleteSalon(req.params.id);
+    return res.status(200).json(response);
+}
+
+async function httpEditSalon(req, res) {
+    const response = await editSalon(req.params.id, req.body.title);
+    return res.status(200).json(response);
+}
+
 module.exports = {
     httpCreateSalon,
     httpGetSalons,
-    httpGetOneSalon
+    httpGetOneSalon,
+    httpDeleteSalon,
+    httpEditSalon,
 }

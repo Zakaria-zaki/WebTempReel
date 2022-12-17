@@ -24,6 +24,22 @@ async function httpGetOneSalon(id) {
     return await response.json();
 }
 
+async function httpCreateSalon(data) {
+    const response = await fetch(`${API_URL}/salons/create`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        },
+        body: JSON.stringify({
+            title: data.title,
+            description: data.description,
+        })
+    });
+
+    return await response.json();
+}
+
 async function httpGetSalonMessage(id) {
     const response = await fetch(`${API_URL}/messages/salons/${id}`, {
         method: 'GET',
@@ -52,9 +68,38 @@ async function httpCreateSalonMessage(data) {
     return await response.json();
 }
 
+async function httpDeleteSalon(id) {
+    const response = await fetch(`${API_URL}/salons/delete/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        },
+    });
+    return await response.json();
+}
+
+async function httpEditSalon(id, title) {
+    const response = await fetch(`${API_URL}/salons/edit/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        },
+        body: JSON.stringify({
+            title: title,
+        })
+    });
+
+    return await response.json();
+}
+
 export {
     httpGetSalons,
     httpGetOneSalon,
     httpGetSalonMessage,
-    httpCreateSalonMessage
+    httpCreateSalonMessage,
+    httpCreateSalon,
+    httpDeleteSalon,
+    httpEditSalon,
 }
