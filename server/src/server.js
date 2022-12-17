@@ -31,13 +31,15 @@ io.on('connection', (socket) => {
         console.log(socket.id + data.msg);
     });
 
-    socket.on('messageSalon', (data) => {
-        let newMsg = "[" + socket.id + "] : " + data.msg;
+    socket.on('messageSalon', async (data) => {
+        let user = await verifyToken(data.token);
+        let newMsg = "[" + user.id + "] : " + data.msg;
         io.to(data.room).emit('appendMessageSalon', {msg: newMsg, client: socket.id});
     });
 });
 
 const sockets = require('./services/sockets');
+const {verifyToken} = require("./services/tokenManager");
 
 async function startServer() {
 

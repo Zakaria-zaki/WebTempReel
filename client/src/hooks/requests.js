@@ -24,7 +24,37 @@ async function httpGetOneSalon(id) {
     return await response.json();
 }
 
+async function httpGetSalonMessage(id) {
+    const response = await fetch(`${API_URL}/messages/salons/${id}`, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        }
+    });
+
+    return await response.json();
+}
+
+async function httpCreateSalonMessage(data) {
+    const response = await fetch(`${API_URL}/messages/new`, {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${jwt}`,
+        },
+        body: JSON.stringify({
+            salonId: data.salonId,
+            content: data.content,
+        })
+    });
+
+    return await response.json();
+}
+
 export {
     httpGetSalons,
-    httpGetOneSalon
+    httpGetOneSalon,
+    httpGetSalonMessage,
+    httpCreateSalonMessage
 }

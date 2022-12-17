@@ -1,10 +1,11 @@
 const express = require('express');
 const checkAuthentication = require("../../middlewares/checkAuthentication");
-const { httpCreateMessage } = require('./messages.controller');
+const { httpCreateMessage, httpGetSalonMessage } = require('./messages.controller');
 
 const messageRouter = express.Router();
 
-messageRouter.post('/', checkAuthentication, httpCreateMessage);
+messageRouter.post('/new', checkAuthentication, httpCreateMessage);
+messageRouter.get('/salons/:id', checkAuthentication, httpGetSalonMessage);
 
 module.exports = messageRouter;
 

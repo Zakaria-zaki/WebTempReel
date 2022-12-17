@@ -1,4 +1,5 @@
 import {io} from "socket.io-client";
+import {httpCreateSalonMessage} from "@/hooks/requests";
 
 class SocketioService {
     socket;
@@ -25,8 +26,10 @@ class SocketioService {
         this.socket.emit('leaveSalon', {msg: " a quitté le salon ", room: salonName});
     }
 
-    sendMessage(message, salonName) {
-        this.socket.emit('messageSalon', {msg: message, room: salonName});
+    async sendMessage(message, salonName, salonId) {
+        let token = localStorage.getItem('esgi-ws-token');
+        this.socket.emit('messageSalon', {token: token, msg: message, room: salonName});
+        await httpCreateSalonMessage({content: message,salonId: salonId});
     }
 
     getMessageAndAppend(messageSection) {

@@ -10,6 +10,7 @@ const router = createRouter({
         { path: '/', redirect: '/login' },
         { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
         { path: '/messages', component: MessagesHome, meta: { requiresAuth: true } },
+        { path: '/messages/salons/new', component: MessagesHome, meta: { requiresAuth: true } },
         { path: '/salons', component: SalonsHome, meta: { requiresAuth: true } },
         { path: '/salons/:id', component: SalonChat, meta: { requiresAuth: true } },
         { path: '/salons/create', component: SalonsHome, meta: { requiresAuth: true } }
