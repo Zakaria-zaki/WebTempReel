@@ -14,6 +14,10 @@ Salon.init({
             type: DataTypes.STRING,
             allowNull: false,
         },
+        nbParticipants: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        }
     },
     {
         sequelize: connection,

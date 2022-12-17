@@ -34,6 +34,7 @@ async function httpCreateSalon(data) {
         body: JSON.stringify({
             title: data.title,
             description: data.description,
+            nbParticipants: data.nbParticipants,
         })
     });
 

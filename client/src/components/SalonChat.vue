@@ -1,7 +1,6 @@
 <script>
 import {httpGetOneSalon, httpGetSalonMessage} from "@/hooks/requests";
 import SocketioService from "@/services/socketio.service";
-import Auth from "@/store/modules/auth";
 
 export default {
   name: "SalonChat",
@@ -42,7 +41,7 @@ export default {
   async created() {
     await this.getData();
     await this.getMessages();
-    SocketioService.joinSalon(this.salon.title);
+    SocketioService.joinSalon(this.salon.title, this.salon.nbParticipants);
     document.getElementById('messages').scrollTo(0, document.getElementById('messages').scrollHeight);
   }
   ,

@@ -67,7 +67,7 @@ export default {
   },
 
   async beforeUpdate() {
-    this.salons = await httpGetSalons();
+    // this.salons = await httpGetSalons();
   }
 }
 </script>
@@ -85,7 +85,10 @@ export default {
         <h2 class="salon__title" :id="'salon__title__' + salon.id">
           <span :class="'originalTitle' + salon.id" :id="salon.id" @click="editTitle">{{ salon.title }}</span>
         </h2>
-        <p class="salon__description">{{ salon.description }}</p>
+        <p class="salon__description">
+          {{ salon.description }} <br>
+          Participants: {{ salon.nbParticipants }} maximum
+        </p>
       </div>
       <div class="salon__footer">
         <SalonButton v-bind="salon" @click="handleClick(salon.id)">Join</SalonButton>

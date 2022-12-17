@@ -20,10 +20,17 @@ io.on('connection', (socket) => {
     });
 
     socket.on('joinSalon', (data) => {
-        console.log(data.room)
-        socket.join(data.room);
-        console.log("ROOM REJOINTE : " + data.room)
-        console.log(socket.id + data.msg);
+        let clients = io.sockets.adapter.rooms.get(data.room)
+        const numClients = clients ? clients.size : 0;
+        if (numClients >= data.nbParticipants) {
+            socket.emit('joinSalonRes', {res: false});
+            console.log("ROOM " + data.room + " IS FULL. UNABLE TO JOIN");
+        }
+        else {
+            socket.join(data.room);
+            socket.emit('joinSalonRes', {res: true});
+            console.log("ROOM REJOINTE : " + data.room)
+        }
     });
 
     socket.on('leaveSalon', (data) => {

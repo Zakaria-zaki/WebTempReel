@@ -4,6 +4,7 @@ async function httpCreateSalon(req, res) {
     const response = await createSalon({
         title: req.body.title,
         description: req.body.description,
+        nbParticipants: req.body.nbParticipants,
     })
     return res.status(200).json(response);
 }

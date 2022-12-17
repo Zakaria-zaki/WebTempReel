@@ -5,6 +5,7 @@ import {ref} from "vue";
 
 const title = ref("");
 const description = ref("");
+const nbParticipants = ref(10);
 
 
 function handleSubmit() {
@@ -16,6 +17,7 @@ function handleSubmit() {
   let salon = {
     title: title.value,
     description: description.value,
+    nbParticipants: nbParticipants.value
   };
 
   httpCreateSalon(salon);
@@ -36,6 +38,11 @@ function handleSubmit() {
       <div class="salon-form form-group" style="margin-top: 20px">
         <label for="description">Description</label>
         <input type="text" id="description" required v-model="description"/>
+      </div>
+
+      <div class="salon-form form-group" style="margin-top: 20px">
+        <label for="nbParticipants">Maximum participants</label>
+        <input type="text" id="nbParticipants" required v-model="nbParticipants"/>
       </div>
 
       <div>

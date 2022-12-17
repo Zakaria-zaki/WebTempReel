@@ -1,5 +1,6 @@
 import {io} from "socket.io-client";
 import {httpCreateSalonMessage} from "@/hooks/requests";
+import router from "@/router/router";
 
 class SocketioService {
     socket;
@@ -18,8 +19,13 @@ class SocketioService {
         }
     }
 
-    joinSalon(salonName) {
-        this.socket.emit('joinSalon', {msg: " a rejoint le salon ", room: salonName});
+    joinSalon(salonName, nbParticipants) {
+        this.socket.emit('joinSalon', {msg: " a rejoint le salon ", room: salonName, nbParticipants: nbParticipants});
+        this.socket.on('joinSalonRes', (data) => {
+            if (data.res === false) {
+                router.push("/salons")
+            }
+        });
     }
 
     leaveSalon(salonName) {
@@ -29,7 +35,7 @@ class SocketioService {
     async sendMessage(message, salonName, salonId) {
         let token = localStorage.getItem('esgi-ws-token');
         this.socket.emit('messageSalon', {token: token, msg: message, room: salonName});
-        await httpCreateSalonMessage({content: message,salonId: salonId});
+        await httpCreateSalonMessage({content: message, salonId: salonId});
     }
 
     getMessageAndAppend(messageSection) {
