@@ -80,7 +80,7 @@ async function httpDeleteSalon(id) {
     return await response.json();
 }
 
-async function httpEditSalon(id, title) {
+async function httpEditSalon(id, title, nbParticipants) {
     const response = await fetch(`${API_URL}/salons/edit/${id}`, {
         method: 'PUT',
         headers: {
@@ -89,6 +89,7 @@ async function httpEditSalon(id, title) {
         },
         body: JSON.stringify({
             title: title,
+            nbParticipants: nbParticipants,
         })
     });
 

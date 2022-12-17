@@ -25,7 +25,7 @@ async function httpDeleteSalon(req, res) {
 }
 
 async function httpEditSalon(req, res) {
-    const response = await editSalon(req.params.id, req.body.title);
+    const response = await editSalon(req.params.id, req.body.title, req.body.nbParticipants);
     return res.status(200).json(response);
 }
 

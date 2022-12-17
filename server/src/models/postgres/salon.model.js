@@ -67,10 +67,11 @@ async function deleteSalon(salonId) {
     }
 }
 
-async function editSalon(salonId, title) {
+async function editSalon(salonId, title, nbParticipants) {
     try {
         return await salon.update({
-            title: title
+            title: title,
+            nbParticipants: nbParticipants
         }, {
             where: {
                 id: salonId
