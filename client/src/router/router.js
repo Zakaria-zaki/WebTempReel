@@ -7,7 +7,7 @@ const router = createRouter({
     history: createWebHistory(),
     routes: [
         { path: '/', redirect: '/login' },
-        { path: '/login', component: UserAuth, meta: { requiresUnauth: true } },
+        { path: '/login', name: 'login', component: UserAuth, meta: { requiresUnauth: true } },
         { path: '/messages', component: MessagesHome, meta: { requiresAuth: true } },
         { path: '/groups', component: GroupsListing, meta: { requiresAuth: true } }
     ]

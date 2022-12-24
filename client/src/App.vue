@@ -1,5 +1,8 @@
 <template>
-  <div class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
+  <router-view v-if="this.$route?.name == 'login'" v-slot="slotProps">
+            <component :is="slotProps.Component"></component>
+  </router-view>
+  <div v-else class="flex flex-row min-h-screen bg-gray-100 text-gray-800">
       <SideMenu />
       <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
           <header class="header bg-white shadow py-4 px-4">
@@ -29,6 +32,7 @@
         </footer>
       </main>
   </div>
+          
 </template>
 
 <script>
