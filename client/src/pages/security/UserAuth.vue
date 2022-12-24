@@ -55,7 +55,7 @@ export default {
             };
 
             try {
-                await this.$store.dispatch('login', actionPayload);
+                await this.$store.dispatch('auth/login', actionPayload);
                 const redirectUrl = '/' + (this.$route.query.redirect || 'messages');
                 this.$router.replace(redirectUrl);
             } catch (error) {

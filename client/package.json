@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "vue": "^3.2.45",
+    "vue-jwt-decode": "^0.1.0",
     "vue-router": "^4.1.6",
     "vuex": "^4.0.0-0"
   },
