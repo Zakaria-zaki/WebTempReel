@@ -186,8 +186,10 @@ export default {
       console.log('socket to notification channel connected')
     },
     userConnected: function (connectedUsers) {
-      this.connectedUsers = connectedUsers;
-      console.log(connectedUsers)
+      const connectedUserEmail = this.$store.state.auth.email;
+      this.connectedUsers = connectedUsers.filter(function(user) {
+        return user.email !== connectedUserEmail;
+      });
     }
   },
   mounted: function () {
