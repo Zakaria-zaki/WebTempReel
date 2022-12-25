@@ -22,7 +22,6 @@ export default {
     
             localStorage.setItem('esgi-ws-token', responseData.token);
             const userInfos = VueJwtDecode.decode(responseData.token);
-            console.log(userInfos);
             context.commit('setUser', {
                 token: responseData.token,
                 firstName: userInfos.firstName,
@@ -38,7 +37,6 @@ export default {
     },
     tryLogin(context) {
         const token = localStorage.getItem('esgi-ws-token');
-        
         if (token) {
             const userInfos = VueJwtDecode.decode(token);
             context.commit('setUser', {

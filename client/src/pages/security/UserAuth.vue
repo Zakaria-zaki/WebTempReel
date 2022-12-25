@@ -56,6 +56,7 @@ export default {
 
             try {
                 await this.$store.dispatch('auth/login', actionPayload);
+                this.$socket.emit('connected', this.$store.state.auth.token);
                 const redirectUrl = '/' + (this.$route.query.redirect || 'messages');
                 this.$router.replace(redirectUrl);
             } catch (error) {

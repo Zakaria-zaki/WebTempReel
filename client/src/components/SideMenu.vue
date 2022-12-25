@@ -147,9 +147,12 @@
           <li class="my-px">
             <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase">Clients</span>
           </li>
-            <SideMenuConversation fullName="Slimane Achbouq" :connected="true" />
-            <SideMenuConversation fullName="Zakariya Zghayba" />
-            <SideMenuConversation fullName="Zaid Zaidouch" />
+            <SideMenuConversation
+              v-for="user in connectedUsers"
+              v-bind:key="user.id"
+              :fullName="user.firstName + ' ' + user.lastName"
+              :connected="true"
+            />
           <li class="my-px">
             <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase">sales consultant</span>
           </li>
@@ -170,8 +173,27 @@
 <script>
 import SideMenuConversation from '@/components/SideMenuConversation.vue';
 export default {
+  data() {
+    return {
+      connectedUsers : []
+    }
+  },
   components: {
     SideMenuConversation
+  },
+  sockets: {
+    connect: function () {
+      console.log('socket to notification channel connected')
+    },
+    userConnected: function (connectedUsers) {
+      this.connectedUsers = connectedUsers;
+      console.log(connectedUsers)
+    }
+  },
+  mounted: function () {
+    if (this.$store.state.auth.token) {
+      this.$socket.emit('connected', this.$store.state.auth.token);
+    }
   }
 }
 </script>

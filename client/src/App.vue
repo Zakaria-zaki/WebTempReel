@@ -29,6 +29,9 @@ export default {
   },
   created () {
     this.$store.dispatch('auth/tryLogin');
+  },
+  beforeUnmount() {
+    // SocketioService.disconnect();
   }
 }
 </script>

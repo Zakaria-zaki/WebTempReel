@@ -13,7 +13,7 @@
                   <div
                     class="flex items-center justify-center h-8 w-8 bg-orange-200 rounded-full text-gray-500"
                   >
-                    H
+                    {{ fullName[0].toUpperCase() }}
                   </div>
               </div>
               <span class="ml-3">{{ fullName }}</span>
