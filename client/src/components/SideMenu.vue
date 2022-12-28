@@ -71,9 +71,9 @@
               <span class="ml-3">Profile</span>
             </a>
           </li>
-          <li class="my-px">
-            <a
-              href="#"
+          <!-- <li class="my-px">
+            <router-link
+              :to="{ name: 'groups'}"
               class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
@@ -95,11 +95,11 @@
               <span
                 class="flex items-center justify-center text-xs text-red-500 font-semibold bg-red-100 h-6 px-2 rounded-full ml-auto"
               >10</span>
-            </a>
-          </li>
+            </router-link>
+          </li> -->
           <li class="my-px">
-            <a
-              href="#"
+            <router-link
+              :to="{ name: 'groups'}"
               class="flex flex-row items-center h-10 px-3 rounded-lg text-gray-300 hover:bg-gray-100 hover:text-gray-700"
             >
               <span class="flex items-center justify-center text-lg text-gray-400">
@@ -119,7 +119,7 @@
                 </svg>
               </span>
               <span class="ml-3">Groups</span>
-            </a>
+            </router-link>
           </li>
           <li class="my-px">
             <a
@@ -148,23 +148,31 @@
             <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase">Clients</span>
           </li>
             <SideMenuConversation
-              v-for="user in connectedUsers"
+              v-for="user in connectedClients"
               v-bind:key="user.id"
               :fullName="user.firstName + ' ' + user.lastName"
               :connected="true"
+              :receiverId="user.id"
             />
           <li class="my-px">
             <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase">sales consultant</span>
           </li>
-            <SideMenuConversation fullName="Group 1" />
+            <SideMenuConversation
+              v-for="user in connectedAdministrators"
+              v-bind:key="user.id"
+              :fullName="user.firstName + ' ' + user.lastName"
+              :connected="true"
+              :receiverId="user.id"
+            />
+            <!-- <SideMenuConversation fullName="Group 1" />
             <SideMenuConversation fullName="Group 2" />
-            <SideMenuConversation fullName="Group 3" />
+            <SideMenuConversation fullName="Group 3" /> -->
           <li class="my-px">
             <span class="flex font-medium text-sm text-gray-300 px-4 my-4 uppercase">Groups</span>
           </li>
-            <SideMenuConversation fullName="Kelly" :connected="true" />
+            <!-- <SideMenuConversation fullName="Kelly" :connected="true" />
             <SideMenuConversation fullName="Sanchez" :connected="true" />
-            <SideMenuConversation fullName="King" :connected="true" />
+            <SideMenuConversation fullName="King" :connected="true" /> -->
         </ul>
       </div>
     </aside>
@@ -175,7 +183,8 @@ import SideMenuConversation from '@/components/SideMenuConversation.vue';
 export default {
   data() {
     return {
-      connectedUsers : []
+      connectedClients : [],
+      connectedAdministrators : []
     }
   },
   components: {
@@ -187,8 +196,14 @@ export default {
     },
     userConnected: function (connectedUsers) {
       const connectedUserEmail = this.$store.state.auth.email;
-      this.connectedUsers = connectedUsers.filter(function(user) {
+      const users = connectedUsers.filter(function(user) {
         return user.email !== connectedUserEmail;
+      });
+      this.connectedClients = users.filter(function(user) {
+        return user.role !== 'ROLE_ADMIN'
+      });
+      this.connectedAdministrators = users.filter(function(user) {
+        return user.role === 'ROLE_ADMIN'
       });
     }
   },

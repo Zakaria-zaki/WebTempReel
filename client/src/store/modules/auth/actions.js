@@ -27,7 +27,8 @@ export default {
                 firstName: userInfos.firstName,
                 lastName: userInfos.lastName,
                 email: userInfos.email,
-                role: userInfos.role
+                role: userInfos.role,
+                id: userInfos.id
             });
         } catch (ex) {
             const error = new Error(ex || 'Failed to authenticate. Check your login data.');
@@ -44,7 +45,8 @@ export default {
                 firstName: userInfos.firstName,
                 lastName: userInfos.lastName,
                 email: userInfos.email,
-                role: userInfos.role
+                role: userInfos.role,
+                id: userInfos.id
             });
         }
     },

@@ -57,7 +57,7 @@ export default {
             try {
                 await this.$store.dispatch('auth/login', actionPayload);
                 this.$socket.emit('connected', this.$store.state.auth.token);
-                const redirectUrl = '/' + (this.$route.query.redirect || 'messages');
+                const redirectUrl = '/' + (this.$route.query.redirect || 'dashboard');
                 this.$router.replace(redirectUrl);
             } catch (error) {
                 this.error = error.message || 'Failed to authenticated, try later.';

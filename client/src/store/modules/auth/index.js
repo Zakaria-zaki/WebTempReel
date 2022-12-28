@@ -11,6 +11,7 @@ export default {
           lastName: '',
           email: '',
           role: '',
+          id: '',
         };
       },
     mutations,

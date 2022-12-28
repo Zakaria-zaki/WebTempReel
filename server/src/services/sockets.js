@@ -17,9 +17,10 @@ function listen(io) {
             }
             socket.broadcast.emit('userConnected', connectedUsers);
             socket.emit('userConnected', connectedUsers);
+            console.log(connectedUsers)
         });
 
-        socket.on('message', (message) => {
+        socket.on('privateMessage', (message) => {
             console.log(`message from ${socket.id} : ${message}`);
             socket.broadcast.emit('messageCreated', message);
         });

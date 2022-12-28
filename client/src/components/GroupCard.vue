@@ -3,6 +3,7 @@
         <div class="flex justify-between items-center">
             <a href="#">
                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">{{ title }}</h5>
+                <span class="bg-red-100 text-red-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-red-200 dark:text-red-900">Max members : {{ membersMax }}</span>
             </a>
             <div class="flex">
                 <a href="#" class="inline-flex rounded-full items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
@@ -24,6 +25,6 @@
 
 <script>
 export default {
-    props: ['title', 'id']
+    props: ['title', 'id', 'membersMax']
 }
 </script>

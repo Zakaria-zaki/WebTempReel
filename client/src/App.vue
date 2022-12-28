@@ -6,7 +6,7 @@
       <SideMenu />
       <main class="main flex flex-col flex-grow -ml-64 md:ml-0 transition-all duration-150 ease-in">
         <Header />
-        <router-view v-slot="slotProps">
+        <router-view v-slot="slotProps" :key="$route.fullPath">
             <component :is="slotProps.Component"></component>
         </router-view>
         <footer class="footer px-4 py-6">
