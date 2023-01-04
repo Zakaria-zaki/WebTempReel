@@ -6,14 +6,9 @@ export default {
     namespaced: true,
     state() {
         return {
-          token: null,
-          firstName: '',
-          lastName: '',
-          email: '',
-          role: '',
-          id: '',
+          users: []
         };
-      },
+    },
     mutations,
     actions,
     getters
