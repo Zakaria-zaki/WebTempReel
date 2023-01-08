@@ -1,6 +1,6 @@
 const express = require('express');
 const checkAuthentication = require("../../middlewares/checkAuthentication");
-const { httpCreateGroup, httpDeleteGroup, httpUpdateGroup, httpGetGroups, httpGetOneGroup} = require('./groups.controller');
+const { httpCreateGroup, httpDeleteGroup, httpUpdateGroup, httpGetGroups, httpGetOneGroup, httpGetGroupMessages} = require('./groups.controller');
 
 const groupRouter = express.Router();
 
@@ -9,5 +9,6 @@ groupRouter.delete('/:id', checkAuthentication, httpDeleteGroup);
 groupRouter.put('/:id', checkAuthentication, httpUpdateGroup);
 groupRouter.get('/', checkAuthentication, httpGetGroups);
 groupRouter.get('/chat/:id', checkAuthentication, httpGetOneGroup);
+groupRouter.get('/group-messages/:id', checkAuthentication, httpGetGroupMessages);
 
 module.exports = groupRouter;

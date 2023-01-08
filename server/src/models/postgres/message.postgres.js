@@ -6,7 +6,11 @@ Message.init({
     content: {
         type: DataTypes.TEXT,
         allowNull: false,
-      }
+      },
+        salonId: {
+            type: DataTypes.INTEGER,
+            allowNull: true,
+        }
     },
     {
         sequelize:connection,
