@@ -9,6 +9,7 @@
         v-bind:key="group.id"
         :title="group.title"
         :membersMax="group.membersMax"
+        :id="group.id"
     />
 </div>
 </template>

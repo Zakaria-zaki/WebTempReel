@@ -4,6 +4,7 @@ import MessagesHome from '@/pages/MessagesHome.vue';
 import GroupsListing from '@/pages/GroupsListing.vue';
 import AddGroup from '@/pages/AddGroup.vue';
 import Dashboard from '@/pages/Dashboard.vue';
+import GroupChat from "@/pages/GroupChat.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -19,7 +20,8 @@ const router = createRouter({
             props: true,
         },
         { path: '/groups', name: 'groups', component: GroupsListing, meta: { requiresAuth: true } },
-        { path: '/groups/add', name: 'add_groups', component: AddGroup, meta: { requiresAuth: true } }
+        { path: '/groups/add', name: 'add_groups', component: AddGroup, meta: { requiresAuth: true } },
+        { path: '/groups/chat/:id', name: 'join_group', component: GroupChat, meta: { requiresAuth: true } }
     ]
 })
 
