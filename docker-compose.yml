@@ -1,43 +1,39 @@
-version: "3"
+version: '3.1'
 
 services:
-  node:
-    image: node:18.0.0-alpine
-    user: node
-    working_dir: /home/node
-    tty: true
-    stdin_open: true
-    ports:
-      - 9000:9000
-    volumes:
-      - ./back:/home/node
-
-  vue:
-    image: node:18.0.0-alpine
-    user: node
-    working_dir: /home/node
-    tty: true
-    stdin_open: true
-    ports:
-      - 8000:8000
-    volumes:
-      - ./front:/home/node
-
-  db:
-    image: postgres:13-alpine
-    restart: always
+  postgres:
+    container_name: postgres_websockets
+    image: postgres
+    restart: on-failure
     environment:
+      POSTGRES_USER: user
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: db
-      POSTGRES_USER: postgres
+      POSTGRES_DB: websockets
     ports:
-      - target: 5432
-        published: 5432
-        protocol: tcp
-
+      - '5432:5432'
   adminer:
     image: adminer
     ports:
-      - 8081:8080
+      - 8080:8080
     depends_on:
-      - db
+      - postgres
+  server:
+    container_name: server_websockets
+    image: node:lts-alpine
+    volumes:
+      - ./server:/usr/local/server
+    working_dir: /usr/local/server
+    ports:
+      - '8000:8000'
+    command: npm run watch
+  client:
+    container_name: client_websockets
+    image: node:lts
+    volumes:
+      - ./client:/var/www/html/app
+    working_dir: /var/www/html/app
+    ports:
+      - '3000:3000'
+    command: npm run dev
+    tty: true
+
