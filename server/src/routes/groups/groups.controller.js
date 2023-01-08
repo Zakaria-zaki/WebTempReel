@@ -1,4 +1,4 @@
-const { createGroup, deleteGroup, updateGroup, getGroups, getGroupById, getOneGroup } = require('../../models/postgres/group.model');
+const { createGroup, deleteGroup, updateGroup, getGroups, getOneGroup, getGroupMessages, getGroupById} = require('../../models/postgres/group.model');
 
 async function httpCreateGroup(req, res) {
     const response = await createGroup({
@@ -40,11 +40,17 @@ async function httpGetOneGroup(req, res) {
     return res.status(200).json(response);
 }
 
+async function httpGetGroupMessages(req, res) {
+    const response = await getGroupMessages(req.params.id);
+    return res.status(200).json(response);
+}
+
 module.exports = {
     httpCreateGroup,
     httpDeleteGroup,
     httpUpdateGroup,
     httpGetGroups,
     httpGetGroup,
-    httpGetOneGroup
+    httpGetOneGroup,
+    httpGetGroupMessages
 }

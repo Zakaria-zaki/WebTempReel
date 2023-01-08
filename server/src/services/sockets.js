@@ -1,5 +1,6 @@
 const io = require('socket.io');
 const jwt = require('jsonwebtoken');
+const {verifyToken} = require("./tokenManager");
 
 function listen(io) {
     let connectedUsers = [];
@@ -56,6 +57,11 @@ function listen(io) {
         socket.on('leaveSalon', (data) => {
             socket.leave(data.room);
             console.log(socket.id + data.msg);
+        });
+
+        socket.on('messageGroup', async (data) => {
+            // io.to(data.room).emit('messageGroupCreated', {message: data.message, client: socket.id});
+            socket.broadcast.emit('messageGroupCreated', {message: data.message, client: socket.id, roomId: data.roomId});
         });
     });
 

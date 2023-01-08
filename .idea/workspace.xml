@@ -5,24 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1eaeae78-fab2-413c-adc0-2c05b83f58d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/pages/GroupChat.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/GroupCard.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/GroupCard.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/router.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/DiscussionGroup.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/GroupChat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/GroupChat.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/models/postgres/group.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/postgres/group.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/models/postgres/message.postgres.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/models/postgres/message.postgres.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/routes/groups/groups.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/groups/groups.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/routes/groups/groups.router.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/groups/groups.router.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/routes/messages/messages.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/routes/messages/messages.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/services/sockets.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/services/sockets.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="ComposerSettings">
-    <execution />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -44,13 +40,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "/home/zaid/Bureau/Cours/WebSocket/WebTempReel/client/src/components",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "/snap/webstorm/294/plugins/javascript-impl/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components" />
       <recent name="$PROJECT_DIR$/server/src/routes" />
       <recent name="$PROJECT_DIR$/client/src/store/modules" />
       <recent name="$PROJECT_DIR$/client/src/pages" />
       <recent name="$PROJECT_DIR$/server/src/routes/messages" />
-      <recent name="$PROJECT_DIR$/server/src/models/postgres" />
     </key>
   </component>
   <component name="RunManager">
@@ -179,7 +195,7 @@
       <workItem from="1672272683247" duration="2180000" />
       <workItem from="1672389341758" duration="7000" />
       <workItem from="1672828824999" duration="4103000" />
-      <workItem from="1673185661118" duration="5296000" />
+      <workItem from="1673185661118" duration="18555000" />
     </task>
     <servers />
   </component>
