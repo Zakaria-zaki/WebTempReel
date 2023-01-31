@@ -5,6 +5,7 @@ import GroupsListing from '@/pages/GroupsListing.vue';
 import AddGroup from '@/pages/AddGroup.vue';
 import EditGroup from '@/pages/EditGroup.vue';
 import Dashboard from '@/pages/Dashboard.vue';
+import GroupChat from "@/pages/GroupChat.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -21,7 +22,8 @@ const router = createRouter({
         },
         { path: '/groups', name: 'groups', component: GroupsListing, meta: { requiresAuth: true } },
         { path: '/groups/add', name: 'add_group', component: AddGroup, meta: { requiresAuth: true } },
-        { path: '/groups/:groupId', name: 'edit_group', component: EditGroup, meta: { requiresAuth: true } }
+        { path: '/groups/:groupId', name: 'edit_group', component: EditGroup, meta: { requiresAuth: true } },
+        { path: '/groups/chat/:id', name: 'join_group', component: GroupChat, meta: { requiresAuth: true } }
     ]
 })
 

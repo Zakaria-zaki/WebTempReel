@@ -25,10 +25,15 @@ async function getGroupById(groupId) {
     return await group.findByPk(groupId)
 }
 
+async function getOneGroup(groupId) {
+    return await group.findByPk(groupId);
+}
+
 module.exports = {
     createGroup,
     deleteGroup,
     updateGroup,
     getGroups,
+    getOneGroup,
     getGroupById
 };
