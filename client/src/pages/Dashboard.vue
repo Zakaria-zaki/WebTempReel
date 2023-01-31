@@ -9,4 +9,14 @@
 		      <!-- Component End  -->
         </div>
       </div>
+      <ChatBoot />
 </template>
+<script>
+import ChatBoot from '../components/ChatBoot.vue';
+
+export default {
+  components: {
+    ChatBoot
+  }
+}
+</script>
