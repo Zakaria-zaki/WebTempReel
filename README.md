@@ -14,30 +14,11 @@
 docker-compose up --d
 ```
 
-### Dependencies Installation node
+### Load fixtures
 
 ```bash
-docker-compose exec node npm install
+docker exec -it server_websockets sh
+npm run migrate-db
 ```
 
-### Dependencies Installation vue
-
-```bash
-docker-compose exec vue npm init vue@latest
-```
-
-```bash
-docker-compose exec vue npm install
-```
-
-### Front Startup
-
-```bash
-docker-compose exec vue npm run dev
-```
-
-### Docker Compose Shutdown
-
-```bash
-docker-compose down --remove-orphans --volumes --timeout 0
-```
+![alt text](https://gcdnb.pbrd.co/images/Dq9P25eBkkDm.png?o=1)
