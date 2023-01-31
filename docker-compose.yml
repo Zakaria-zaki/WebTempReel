@@ -25,7 +25,12 @@ services:
     working_dir: /usr/local/server
     ports:
       - '8000:8000'
-    command: npm run watch
+    command:
+      - /bin/sh
+      - -c
+      - |
+        npm install
+        npm run watch
   client:
     container_name: client_websockets
     image: node:lts
