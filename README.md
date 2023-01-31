@@ -8,6 +8,13 @@
 
 ## Commands
 
+# add .env file in server folder
+
+```
+PORT=8000
+JWT_SECRET=secret
+```
+
 ### Docker Compose Startup
 
 ```bash
