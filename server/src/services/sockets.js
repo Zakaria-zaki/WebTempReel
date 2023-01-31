@@ -1,5 +1,6 @@
 const io = require('socket.io');
 const jwt = require('jsonwebtoken');
+const {verifyToken} = require("./tokenManager");
 
 function listen(io) {
     let connectedUsers = [];
@@ -38,6 +39,30 @@ function listen(io) {
             socket.emit('userConnected', connectedUsers);
             socket.broadcast.emit('userConnected', connectedUsers);
         })
+
+        socket.on('joinSalon', (data) => {
+            let clients = io.sockets.adapter.rooms.get(data.room)
+            const numClients = clients ? clients.size : 0;
+            if (numClients >= data.nbParticipants) {
+                socket.emit('joinSalonRes', {res: false});
+                console.log("ROOM " + data.room + " IS FULL. UNABLE TO JOIN");
+            }
+            else {
+                socket.join(data.room);
+                socket.emit('joinSalonRes', {res: true});
+                console.log("ROOM REJOINTE : " + data.room)
+            }
+        });
+
+        socket.on('leaveSalon', (data) => {
+            socket.leave(data.room);
+            console.log(socket.id + data.msg);
+        });
+
+        socket.on('messageGroup', async (data) => {
+            // io.to(data.room).emit('messageGroupCreated', {message: data.message, client: socket.id});
+            socket.broadcast.emit('messageGroupCreated', {message: data.message, client: socket.id, roomId: data.roomId});
+        });
     });
 
 };
