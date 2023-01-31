@@ -3,6 +3,7 @@ import UserAuth from '@/pages/security/UserAuth.vue';
 import MessagesHome from '@/pages/MessagesHome.vue';
 import GroupsListing from '@/pages/GroupsListing.vue';
 import AddGroup from '@/pages/AddGroup.vue';
+import EditGroup from '@/pages/EditGroup.vue';
 import Dashboard from '@/pages/Dashboard.vue';
 
 const router = createRouter({
@@ -19,7 +20,8 @@ const router = createRouter({
             props: true,
         },
         { path: '/groups', name: 'groups', component: GroupsListing, meta: { requiresAuth: true } },
-        { path: '/groups/add', name: 'add_groups', component: AddGroup, meta: { requiresAuth: true } }
+        { path: '/groups/add', name: 'add_group', component: AddGroup, meta: { requiresAuth: true } },
+        { path: '/groups/:groupId', name: 'edit_group', component: EditGroup, meta: { requiresAuth: true } }
     ]
 })
 
