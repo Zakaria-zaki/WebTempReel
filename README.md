@@ -8,7 +8,7 @@
 
 ## Commands
 
-# add .env file in server folder
+### add .env file in server folder
 
 ```
 PORT=8000
