@@ -9,13 +9,17 @@
 		      <!-- Component End  -->
         </div>
       </div>
+      <ChatBoot />
 </template>
 
 <script>
 import DiscussionBoard from '@/components/DiscussionBoard.vue';
+import ChatBoot from '@/components/ChatBoot.vue';
+
 export default {
   components: {
-	  DiscussionBoard
+	  DiscussionBoard,
+    ChatBoot
   }
 }
 </script>
