@@ -21,9 +21,14 @@ async function getGroups() {
     return await group.findAll();
 }
 
+async function getGroupById(groupId) {
+    return await group.findByPk(groupId)
+}
+
 module.exports = {
     createGroup,
     deleteGroup,
     updateGroup,
-    getGroups
+    getGroups,
+    getGroupById
 };

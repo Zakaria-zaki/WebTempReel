@@ -1,4 +1,4 @@
-const { createGroup, deleteGroup, updateGroup, getGroups } = require('../../models/postgres/group.model');
+const { createGroup, deleteGroup, updateGroup, getGroups, getGroupById } = require('../../models/postgres/group.model');
 
 async function httpCreateGroup(req, res) {
     const response = await createGroup({
@@ -10,7 +10,11 @@ async function httpCreateGroup(req, res) {
 
 async function httpDeleteGroup(req, res) {
     const response = await deleteGroup(req.params.id);
-    return res.status(200).json(response);
+    if (response == 1) {
+        const groups = await getGroups();
+        return res.status(200).json(groups);
+    }
+    return res.status(500).json({'message': 'Error occurred while trying to remove the given group'});
 }
 
 async function httpUpdateGroup(req, res) {
@@ -18,6 +22,11 @@ async function httpUpdateGroup(req, res) {
         title: req.body.title,
         membersMax: req.body.membersMax
     }, req.params.id);
+    return res.status(200).json(response);
+}
+
+async function httpGetGroup(req, res) {
+    const response = await getGroupById(req.params.id);
     return res.status(200).json(response);
 }
 
@@ -30,5 +39,6 @@ module.exports = {
     httpCreateGroup,
     httpDeleteGroup,
     httpUpdateGroup,
-    httpGetGroups
+    httpGetGroups,
+    httpGetGroup
 }
